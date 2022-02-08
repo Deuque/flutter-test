@@ -34,10 +34,10 @@ class _FirebaseAppState extends State<FirebaseApp> {
     debugPrint("firebase initialized");
 
     // Pass all uncaught errors to Crashlytics.
-    Function originalOnError = FlutterError.onError;
+    Function(FlutterErrorDetails)? originalOnError = FlutterError.onError;
     FlutterError.onError = (FlutterErrorDetails errorDetails) async {
       // Forward to original handler.
-      originalOnError(errorDetails);
+      originalOnError?.call(errorDetails);
     };
   }
 

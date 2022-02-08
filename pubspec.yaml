@@ -18,22 +18,25 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.15.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: ^2.0.0
+  cloud_firestore: ^3.1.7
   cupertino_icons: ^1.0.2
-  firebase_core: ^1.2.0
+  firebase_core: ^1.12.0
+  get_it: ^7.2.0
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: any
-  json_annotation: ^4.0.1
-  json_serializable: ^4.1.2
+  build_runner: ^2.1.7
+  json_annotation: ^4.4.0
+  json_serializable: ^6.1.4
   test: any
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
