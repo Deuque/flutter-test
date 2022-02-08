@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:morphosis_flutter_demo/non_ui/locator/locator.dart';
 import 'package:morphosis_flutter_demo/non_ui/repo/firebase_manager.dart';
 import 'package:morphosis_flutter_demo/ui/screens/index.dart';
 import 'package:morphosis_flutter_demo/ui/widgets/error_widget.dart';
@@ -65,6 +66,7 @@ class _FirebaseAppState extends State<FirebaseApp> {
   @override
   void initState() {
     initialize();
+    locatorSetup();
     super.initState();
   }
 
