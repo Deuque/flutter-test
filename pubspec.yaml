@@ -31,6 +31,8 @@ dependencies:
   get_it: ^7.2.0
   equatable: ^2.0.3
   shared_preferences: ^2.0.13
+  bloc_test: ^9.0.2
+  mocktail: ^0.2.0
 
 dev_dependencies:
   flutter_test:
