@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:morphosis_flutter_demo/non_ui/bloc/cocktail_cubit.dart';
 import 'package:morphosis_flutter_demo/non_ui/locator/locator.dart';
 import 'package:morphosis_flutter_demo/non_ui/model/cocktail.dart';
+import 'package:morphosis_flutter_demo/ui/widgets/error_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,6 +28,8 @@ class _HomePageState extends State<HomePage> {
     _searchTextField.dispose();
     super.dispose();
   }
+
+  Future<void> _refresh() async => cocktailCubit.reloadOrdinaryDrinks();
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +63,10 @@ class _HomePageState extends State<HomePage> {
               child: BlocBuilder<CocktailCubit, CocktailState>(
                 builder: (context, state) {
                   if (state.error != null) {
-                    return Center(
-                      child: Text(
-                        state.error!,
-                        textAlign: TextAlign.center,
-                      ),
-                    );
+                    return WarningMessage(
+                        message: state.error!,
+                        buttonTitle: 'Refresh',
+                        onTap: _refresh);
                   } else if (state.loading) {
                     return Center(child: CircularProgressIndicator());
                   } else if (state.loadedCocktails != null) {
@@ -96,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               .toList();
 
           return RefreshIndicator(
-            onRefresh: () async => cocktailCubit.reloadOrdinaryDrinks(),
+            onRefresh: _refresh,
             child: ListView.builder(
               padding: EdgeInsets.only(top: 20),
               physics: const AlwaysScrollableScrollPhysics(),

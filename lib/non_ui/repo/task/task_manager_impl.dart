@@ -5,6 +5,6 @@ import '../async_value.dart';
 abstract class TaskManagerImpl{
   Future<AsyncValue<List<Task>>> fetchTasks();
   Future<AsyncValue<String>> addTask(Task task);
-  Future<AsyncValue<bool>> deleteTask();
+  Future<AsyncValue<bool>> deleteTask(Task task);
   Future<AsyncValue<bool>> updateTask(Task task);
 }

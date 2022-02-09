@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:morphosis_flutter_demo/non_ui/model/task.dart';
@@ -18,7 +17,7 @@ class TaskCubit extends Cubit<TaskState> {
       emit(state.copyWith(error: tasksAsync.error.toString()));
     } else {
       final tasks = tasksAsync.value;
-      tasks!.sort((a, b) => a.createdAt!.compareTo(b.createdAt!));
+      tasks!.sort((b, a) => a.createdAt!.compareTo(b.createdAt!));
       emit(state.withValue(tasks));
     }
   }
@@ -33,5 +32,11 @@ class TaskCubit extends Cubit<TaskState> {
     tasks.removeWhere((element) => element.id == task.id);
     final newTasks = <Task>[task, ...tasks];
     emit(state.copyWith(allTasks: newTasks));
+  }
+
+  void deleteTaskInList(Task task) {
+    var tasks = state.allTasks ?? [];
+    tasks = tasks.where((element) => element.id != task.id).toList();
+    emit(state.copyWith(allTasks: tasks));
   }
 }

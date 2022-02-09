@@ -76,99 +76,93 @@ class __TaskFormState extends State<_TaskForm> {
     }
   }
 
-    @override
-    Widget build(BuildContext context) {
-      return BlocProvider.value(
-        value: locator<TaskModifyCubit>(),
-        child: BlocConsumer<TaskModifyCubit, TaskModifyState>(
-          listener: (context, state) {
-            if (state.taskModifyError != null) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(
-                  SnackBar(content: Text(state.taskModifyError!)));
-            }
-            if (state.taskModifySuccess != null) {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.taskModifySuccess!)));
-            }
-          },
-          builder: (context, state) {
-            return Stack(
-              children: [
-                SafeArea(
-                  child: Container(
-                    padding: const EdgeInsets.all(_padding),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            controller: _titleController,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Title',
-                            ),
-                            validator: (s) =>
-                            s == null || s.isEmpty
-                                ? 'Please enter a title'
-                                : null,
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider.value(
+      value: locator<TaskModifyCubit>(),
+      child: BlocConsumer<TaskModifyCubit, TaskModifyState>(
+        listener: (context, state) {
+          if (state.taskModifyError != null) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.taskModifyError!)));
+          }
+          if (state.taskModifySuccess != null) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return Stack(
+            children: [
+              SafeArea(
+                child: Container(
+                  padding: const EdgeInsets.all(_padding),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _titleController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Title',
                           ),
-                          SizedBox(height: _padding),
-                          TextFormField(
-                            controller: _descriptionController,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Description',
-                            ),
-                            validator: (s) =>
-                            s == null || s.isEmpty
-                                ? 'Please enter a description'
-                                : null,
-                            minLines: 5,
-                            maxLines: 10,
+                          validator: (s) => s == null || s.isEmpty
+                              ? 'Please enter a title'
+                              : null,
+                        ),
+                        SizedBox(height: _padding),
+                        TextFormField(
+                          controller: _descriptionController,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Description',
                           ),
-                          SizedBox(height: _padding),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Completed ?'),
-                              CupertinoSwitch(
-                                value: task?.isCompleted ?? false,
-                                onChanged: (_) {
-                                  setState(() {
-                                    task!.toggleComplete();
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            onPressed: () => _save(context),
-                            child: Container(
-                              width: double.infinity,
-                              child: Center(
-                                  child: Text(
-                                      task!.isNew ? 'Create' : 'Update')),
+                          validator: (s) => s == null || s.isEmpty
+                              ? 'Please enter a description'
+                              : null,
+                          minLines: 5,
+                          maxLines: 10,
+                        ),
+                        SizedBox(height: _padding),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Completed ?'),
+                            CupertinoSwitch(
+                              value: task?.isCompleted ?? false,
+                              onChanged: (_) {
+                                setState(() {
+                                  task!.toggleComplete();
+                                });
+                              },
                             ),
-                          )
-                        ],
-                      ),
+                          ],
+                        ),
+                        Spacer(),
+                        ElevatedButton(
+                          onPressed: () => _save(context),
+                          child: Container(
+                            width: double.infinity,
+                            child: Center(
+                                child: Text(task!.isNew ? 'Create' : 'Update')),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
-                if (state.toBeModified == task)
-                  Positioned.fill(
-                      child: Container(
-                        color: Colors.white.withOpacity(.7),
-                        alignment: Alignment.center,
-                        child: CircularProgressIndicator(),
-                      ))
-              ],
-            );
-          },
-        ),
-      );
-    }
+              ),
+              if (state.toBeModified == task)
+                Positioned.fill(
+                    child: Container(
+                  color: Colors.white.withOpacity(.7),
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(),
+                ))
+            ],
+          );
+        },
+      ),
+    );
   }
+}

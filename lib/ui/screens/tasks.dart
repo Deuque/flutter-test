@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:morphosis_flutter_demo/non_ui/bloc/task_cubit.dart';
@@ -6,6 +5,7 @@ import 'package:morphosis_flutter_demo/non_ui/bloc/task_modify_cubit.dart';
 import 'package:morphosis_flutter_demo/non_ui/locator/locator.dart';
 import 'package:morphosis_flutter_demo/non_ui/model/task.dart';
 import 'package:morphosis_flutter_demo/ui/screens/task.dart';
+import 'package:morphosis_flutter_demo/ui/widgets/error_widget.dart';
 
 class TasksPage extends StatelessWidget {
   final String title;
@@ -26,6 +26,8 @@ class TasksPage extends StatelessWidget {
     );
   }
 
+  Future<void> _refresh() async => locator<TaskCubit>().fetchTasks();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,36 +40,54 @@ class TasksPage extends StatelessWidget {
             )
           ],
         ),
-        body: BlocBuilder<TaskCubit, TaskState>(
-          builder: (context, state) {
-            if (state.error != null) {
-              return Center(
-                child: Text(
-                  state.error!,
-                  textAlign: TextAlign.center,
-                ),
-              );
-            } else if (state.loading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (state.allTasks != null) {
-              final tasks = showOnlyCompletedTasks
-                  ? state.completedTasks!
-                  : state.allTasks!;
-              return tasks.isEmpty
-                  ? Center(
-                      child: Text('Add your first task'),
-                    )
-                  : ListView.builder(
-                      itemCount: tasks.length,
-                      itemBuilder: (context, index) {
-                        return _Task(
-                          tasks[index],
-                        );
-                      },
-                    );
+        body: BlocListener<TaskModifyCubit, TaskModifyState>(
+          listener: (context, state) {
+            if (state.taskModifyError != null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.taskModifyError!)));
             }
-            return SizedBox.shrink();
+            if (state.taskModifySuccess != null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.taskModifySuccess!)));
+            }
           },
+          child: BlocBuilder<TaskCubit, TaskState>(
+            builder: (context, state) {
+              if (state.error != null) {
+                return WarningMessage(
+                    message: state.error!,
+                    buttonTitle: 'Refresh',
+                    onTap: _refresh);
+              } else if (state.loading) {
+                return Center(child: CircularProgressIndicator());
+              } else if (state.allTasks != null) {
+                final tasks = showOnlyCompletedTasks
+                    ? state.completedTasks!
+                    : state.allTasks!;
+                return tasks.isEmpty
+                    ? Center(
+                        child: WarningMessage(
+                            title: '',
+                            message: 'Add your first task',
+                            buttonTitle: 'Add',
+                            onTap: () => addTask(context)),
+                      )
+                    : RefreshIndicator(
+                        onRefresh: _refresh,
+                        child: ListView.builder(
+                          physics: AlwaysScrollableScrollPhysics(),
+                          itemCount: tasks.length,
+                          itemBuilder: (context, index) {
+                            return _Task(
+                              tasks[index],
+                            );
+                          },
+                        ),
+                      );
+              }
+              return SizedBox.shrink();
+            },
+          ),
         ));
   }
 }
@@ -78,7 +98,7 @@ class _Task extends StatelessWidget {
   final Task task;
 
   void _delete() {
-    //TODO implement delete to firestore
+    locator<TaskModifyCubit>().deleteTask(task);
   }
 
   void _toggleComplete() {
@@ -101,20 +121,20 @@ class _Task extends StatelessWidget {
         return Stack(
           children: [
             ListTile(
-              leading:  IconButton(
-                      icon: isUpdating
-                          ? SizedBox(
+              leading: IconButton(
+                icon: isUpdating
+                    ? SizedBox(
                         height: 20,
                         width: 20,
                         child: CircularProgressIndicator(),
                       )
-                          :Icon(
+                    : Icon(
                         task.isCompleted
                             ? Icons.check_box
                             : Icons.check_box_outline_blank,
                       ),
-                      onPressed: _toggleComplete,
-                    ),
+                onPressed: _toggleComplete,
+              ),
               title: Text(task.title!),
               subtitle: Text(task.description!),
               trailing: IconButton(

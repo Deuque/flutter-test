@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ErrorMessage extends StatelessWidget {
-  ErrorMessage({
+class WarningMessage extends StatelessWidget {
+  WarningMessage({
     this.title = 'Error',
     required this.message,
     required this.buttonTitle,

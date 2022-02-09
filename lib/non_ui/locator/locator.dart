@@ -14,5 +14,6 @@ void locatorSetup() {
   locator.registerLazySingleton<CocktailCubit>(
       () => CocktailCubit(locator.get<CocktailManager>()));
   locator.registerLazySingleton(() => TaskCubit(locator.get<TaskManager>()));
-  locator.registerLazySingleton(() => TaskModifyCubit(locator.get<TaskManager>()));
+  locator.registerLazySingleton(
+      () => TaskModifyCubit(locator.get<TaskManager>(), locator<TaskCubit>()));
 }

@@ -23,9 +23,13 @@ class TaskManager implements TaskManagerImpl {
   }
 
   @override
-  Future<AsyncValue<bool>> deleteTask() {
-    // TODO: implement deleteTask
-    throw UnimplementedError();
+  Future<AsyncValue<bool>> deleteTask(Task task) async{
+    try {
+      await taskCollection.doc(task.id).delete();
+      return AsyncValue.withValue(true);
+    } catch (e) {
+      return AsyncValue.withError(e);
+    }
   }
 
   @override

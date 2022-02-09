@@ -79,7 +79,7 @@ class _FirebaseAppState extends State<FirebaseApp> {
         title: title,
         home: Scaffold(
           body: _error
-              ? ErrorMessage(
+              ? WarningMessage(
                   message: "Problem initialising the app",
                   buttonTitle: "RETRY",
                   onTap: initialize,
