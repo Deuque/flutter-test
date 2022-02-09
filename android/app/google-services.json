@@ -1,42 +1,145 @@
 {
   "project_info": {
-    "project_number": "951868577029",
-    "firebase_url": "https://todo-example-1a44a-default-rtdb.firebaseio.com",
-    "project_id": "todo-example-1a44a",
-    "storage_bucket": "todo-example-1a44a.appspot.com"
+    "project_number": "1023928053274",
+    "project_id": "keyjoy-ae415",
+    "storage_bucket": "keyjoy-ae415.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:951868577029:android:0028fd4c6025f85c2f136c",
+        "mobilesdk_app_id": "1:1023928053274:android:367daf52571ad88ffd2ba3",
         "android_client_info": {
           "package_name": "com.demo.morphosis"
         }
       },
       "oauth_client": [
         {
-          "client_id": "951868577029-vovgvfbh8sjpakne7b9cb7fk55tv7715.apps.googleusercontent.com",
+          "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyATT8qwG2Of_NAViYJeFWzDH2w2v_uEQsg"
+          "current_key": "AIzaSyCvGZ4eV8r1lt5R9xqjqGDlTvAXdfgjNCU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "951868577029-vovgvfbh8sjpakne7b9cb7fk55tv7715.apps.googleusercontent.com",
+              "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
               "client_type": 3
-            },
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023928053274:android:730f1ef444cf8268fd2ba3",
+        "android_client_info": {
+          "package_name": "com.example.keyjoy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023928053274-09b3qf5niqoh9uhf4dnl84dvqp9smlnp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.keyjoy",
+            "certificate_hash": "9957a10c4e74da9ff1913e629b0275e26827f8cb"
+          }
+        },
+        {
+          "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvGZ4eV8r1lt5R9xqjqGDlTvAXdfgjNCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
             {
-              "client_id": "951868577029-mjn0ejbu8937ioiric9uloask01b734k.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.demo.morphosis"
-              }
+              "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023928053274:android:94bbd9f74d7dcaf9fd2ba3",
+        "android_client_info": {
+          "package_name": "com.kerjoy.kerjoy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023928053274-7hk7ed6unr0cbtptuo7tak27qtom3eue.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerjoy.kerjoy",
+            "certificate_hash": "9957a10c4e74da9ff1913e629b0275e26827f8cb"
+          }
+        },
+        {
+          "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvGZ4eV8r1lt5R9xqjqGDlTvAXdfgjNCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023928053274:android:c2439b140fad6512fd2ba3",
+        "android_client_info": {
+          "package_name": "com.kerjoy.kerjoy_events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023928053274-2toq82277b65grb0ebsekc8sm5qqb268.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerjoy.kerjoy_events",
+            "certificate_hash": "9957a10c4e74da9ff1913e629b0275e26827f8cb"
+          }
+        },
+        {
+          "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvGZ4eV8r1lt5R9xqjqGDlTvAXdfgjNCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023928053274-1ssl1sqrblcjptb092b14rhsn8iqhef3.apps.googleusercontent.com",
+              "client_type": 3
             }
           ]
         }

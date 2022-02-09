@@ -11,6 +11,8 @@ class Task {
   String? description;
   @JsonKey(name: 'completed_at')
   DateTime? completedAt;
+  @JsonKey(name: 'created_at')
+  DateTime? createdAt;
 
   bool get isNew {
     return id == null;
@@ -31,4 +33,29 @@ class Task {
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
 
   Map<String, dynamic> toJson() => _$TaskToJson(this);
+
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Task &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          title == other.title &&
+          description == other.description &&
+          completedAt == other.completedAt &&
+          createdAt == other.createdAt;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      title.hashCode ^
+      description.hashCode ^
+      completedAt.hashCode ^
+      createdAt.hashCode;
+
+  @override
+  String toString() {
+    return 'Task{id: $id}';
+  }
 }

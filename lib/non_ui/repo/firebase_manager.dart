@@ -14,16 +14,16 @@ class FirebaseManager {
   FirebaseFirestore get firestore => FirebaseFirestore.instance;
 
   //TODO: change collection name to something unique or your name
-  CollectionReference get tasksRef =>
-      FirebaseFirestore.instance.collection('tasks');
+  CollectionReference tasksRef(path) =>
+      firestore.collection(path);
 
   //TODO: replace mock data. Remember to set the task id to the firebase object id
   List<Task> get tasks => mockData.map((t) => Task.fromJson(t)).toList();
 
-  //TODO: implement firestore CRUD functions here
-  void addTask(Task task) {
-    tasksRef.add(task.toJson());
-  }
+  // //TODO: implement firestore CRUD functions here
+  // void addTask(Task task) {
+  //   tasksRef.add(task.toJson());
+  // }
 }
 
 List<Map<String, dynamic>> mockData = [

@@ -34,7 +34,7 @@ class CocktailCubit extends Cubit<CocktailState> {
 
   void fetchOrdinaryDrinksFromOnlineSource() async {
     final cocktailsAsync = await cocktailManager.fetchOnlineOrdinaryDrinks();
-    if (cocktailsAsync.error != null) {
+    if (cocktailsAsync.hasError) {
       emit(state.copyWith(error: cocktailsAsync.error.toString()));
     } else {
       cocktailManager.saveOrdinaryDrinks(cocktailsAsync.value!);
