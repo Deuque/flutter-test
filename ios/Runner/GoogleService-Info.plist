@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>583368355232-1q28s0ibchdsci8vv6a2jb9rie7p422i.apps.googleusercontent.com</string>
+	<string>1023928053274-hi987nudh74clfre115tmakqhfbcl94g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.583368355232-1q28s0ibchdsci8vv6a2jb9rie7p422i</string>
+	<string>com.googleusercontent.apps.1023928053274-hi987nudh74clfre115tmakqhfbcl94g</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1023928053274-09b3qf5niqoh9uhf4dnl84dvqp9smlnp.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAo08u-gPrq3G7aq6JJgzwWdznySR1zQ9A</string>
+	<string>AIzaSyAGiKZaqpPaUpvSMnsENllUYgcr4NT4l5Y</string>
 	<key>GCM_SENDER_ID</key>
-	<string>583368355232</string>
+	<string>1023928053274</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.demo.morphosis</string>
 	<key>PROJECT_ID</key>
-	<string>morphostest</string>
+	<string>keyjoy-ae415</string>
 	<key>STORAGE_BUCKET</key>
-	<string>morphostest.appspot.com</string>
+	<string>keyjoy-ae415.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:583368355232:ios:ec7343a6ecff9e08eb08c5</string>
+	<string>1:1023928053274:ios:d0483029ef2cfe55fd2ba3</string>
 </dict>
 </plist>
