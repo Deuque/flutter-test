@@ -1,6 +1,7 @@
 # Flutter test submission
 
 ## Demo
+<img src="morph.gif" height="500"/>
 
 ## Implementation Summary
 1. Data fetch from an open api for cocktails
